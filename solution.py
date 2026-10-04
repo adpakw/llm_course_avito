@@ -38,7 +38,7 @@ TRAINING_CONFIG = {
     'per_device_train_batch_size': 16,
     'save_steps': 100,
     'save_total_limit': 2,
-    'learning_rate': 5e-5,
+    'learning_rate': 3e-4,
     'weight_decay': 0.01,
     'warmup_steps': 200,
     'logging_steps': 1,
