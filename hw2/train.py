@@ -26,7 +26,7 @@ from trl.trainer.sft_trainer import DataCollatorForLanguageModeling
 
 DATA: Path = Path("data")
 TRAIN_SECONDS: float = 300
-ATTENTION_IMPLEMENTATION: str = "sdpa"
+ATTENTION_IMPLEMENTATION: str = "flash_attention_2"
 
 MODEL_CONFIG: dict[str, Any] = dict(
     hidden_size=2048,
@@ -39,15 +39,15 @@ MODEL_CONFIG: dict[str, Any] = dict(
 )
 
 TRAINING_CONFIG: dict[str, Any] = dict(
-    output_dir="results/baseline",
+    output_dir="results/final_best",
     # Настройки для экспериментов.
     per_device_train_batch_size=32,
-    gradient_accumulation_steps=2,
+    gradient_accumulation_steps=1,
     gradient_checkpointing=False,
     torch_compile=False,
     use_liger_kernel=False,
     activation_offloading=False,
-    packing=False,
+    packing=True,
     padding_free=False,
     # Общие параметры обучения и замера.
     max_steps=1_000_000,
